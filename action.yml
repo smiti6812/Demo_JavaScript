@@ -5,6 +5,9 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  input_1:
+    required: true
+    default: 'I am input_1'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
