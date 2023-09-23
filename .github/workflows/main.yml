@@ -15,4 +15,4 @@ jobs:
       - name: Get the output time
         run: |
             echo "The time was ${{ steps.hello.outputs.time }}"
-            echo "Here comes output_1: ${{steps.hello.outputs.output_1}}
+            echo "Here comes output_1: ${{steps.hello.outputs.output_1}}"
