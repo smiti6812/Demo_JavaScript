@@ -10,6 +10,9 @@ jobs:
         uses: smiti6812/Demo_Javascript@main
         with:
           who-to-greet: 'Mona the Octocat'
+          input_1: 'input_1 has been changed'
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: |
+            echo "The time was ${{ steps.hello.outputs.time }}"
+            echo "Here comes output_1: ${{steps.hello.outputs.output_1}}
