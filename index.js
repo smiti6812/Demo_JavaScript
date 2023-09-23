@@ -2,10 +2,14 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  // `who-to-greet` input defined in action metadata file
+  
   const input = core.getInput('input_1');
   console.log(input);
   const output_1 = 'I am output_1';
+  core.info("INFO: input_1 = " + input);
+  core.notice("This is a notice");
+  core.warning("This is a warning");
+  core.error("This is an error");
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);  
   core.setOutput('output_1',output_1);
