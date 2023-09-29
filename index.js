@@ -1,8 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fetch = (...args) =>
-  import('node-fetch').then(({ default: fetch }) => fetch(...args));const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 
 try {
   
