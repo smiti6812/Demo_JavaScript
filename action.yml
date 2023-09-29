@@ -8,8 +8,8 @@ inputs:
   input_1:
     required: true
     default: 'I am input_1'
-   TENOR_TOKEN:
-     required: true
+  TENOR_TOKEN:
+    required: true
      
 outputs:
   time: # id of output
