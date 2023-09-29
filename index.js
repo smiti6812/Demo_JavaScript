@@ -6,7 +6,7 @@ try {
   
   const input = core.getInput('input_1');
   console.log(input);
- 
+  const TENOR_TOKEN = core.getInput('TENOR_TOKEN');
   const output_1 = 'I am output_1';
   core.info("INFO: input_1 = " + input);
   core.notice("This is a notice");
