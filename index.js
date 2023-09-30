@@ -15,6 +15,7 @@ try {
     const { results } = await response.json();
     console.log(results);
     const gifUrl = results[0].media[0].tinygif.url;
+    console.log(gifUrl);
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
         return;
