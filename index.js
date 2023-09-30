@@ -19,7 +19,10 @@ try {
         return;
     }    
     // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
-    if (context.payload.action === "opened") {        
+      
+
+    if (context.payload.action === "opened") {
+     
         // add a comment to the PR
         await octokit.rest.issues.createComment({            
             owner: context.repo.owner,
