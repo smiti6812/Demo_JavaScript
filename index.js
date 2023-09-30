@@ -5,6 +5,7 @@ const fetch = (...args) =>
 
 async function main(){
 try {
+     const TENOR_TOKEN = core.getInput('TENOR_TOKEN');
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
         return;
@@ -17,7 +18,7 @@ try {
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
-            body: `Thank you for submitting a pull request! We will try to review this as soon as we can. + \n\n<img src="${gifUrl}" alt="thank you" />`;
+            body: `Thank you for submitting a pull request! We will try to review this as soon as we can. + \n\n<img src="${gifUrl}" alt="thank you" />`
             const randomPos = Math.round(Math.random() * 1000);
             const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
             const response = await fetch(url);
@@ -38,7 +39,7 @@ try {
     }
   const input = core.getInput('input_1');
   console.log(input);
-  const TENOR_TOKEN = core.getInput('TENOR_TOKEN');
+ 
   const output_1 = 'I am output_1';
   core.info("INFO: input_1 = " + input);
   core.notice("This is a notice");
