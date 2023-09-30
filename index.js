@@ -21,9 +21,8 @@ try {
         core.warning("This action should only be used with pull requests.");
         return;
     }    
-    // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request    
-
-    if (context.payload.action === "opened") {
+    // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+  if (context.payload.action === "opened") {
      
         // add a comment to the PR
         await octokit.rest.issues.createComment({            
