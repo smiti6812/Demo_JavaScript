@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-async main(){
+async function main(){
 try {
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
@@ -17,7 +17,13 @@ try {
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
-            body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
+            body: `Thank you for submitting a pull request! We will try to review this as soon as we can. + \n\n<img src="${gifUrl}" alt="thank you" />`
+            const randomPos = Math.round(Math.random() * 1000);
+            const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
+            const response = await fetch(url);
+            const { results } = await response.json();
+            const gifUrl = results[0].media[0].tinygif.url;
+          
         });
 
         // add a label to the PR
