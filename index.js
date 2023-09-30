@@ -9,14 +9,7 @@ try {
     const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
     const octokit = github.getOctokit(GITHUB_TOKEN);    
     const { context } = require('@actions/github');
-  /*
-    const randomPos = Math.round(Math.random() * 1000);
-    const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
-    const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
-    const { results } = await response.json();
-    console.log(results);
-    const gifUrl = results[0].media[0].tinygif.url;
-  */
+ 
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
         return;
@@ -29,7 +22,7 @@ try {
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
-            body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'               
+            body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'         
           
         });
 
