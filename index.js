@@ -8,20 +8,20 @@ try {
     const TENOR_TOKEN = core.getInput('TENOR_TOKEN');
     const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
     const octokit = github.getOctokit(GITHUB_TOKEN);    
-    const { context } = require('@actions/github')
+    const { context } = require('@actions/github');
+    const randomPos = Math.round(Math.random() * 1000);
+    const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
+    const response = await fetch(url);
+    const { results } = await response.json();
+    const gifUrl = results[0].media[0].tinygif.url;
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
         return;
     }    
     // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
-    if (context.payload.action === "opened") {
-        const randomPos = Math.round(Math.random() * 1000);
-        const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
-        const response = await fetch(url);
-        const { results } = await response.json();
-        const gifUrl = results[0].media[0].tinygif.url;
+    if (context.payload.action === "opened") {        
         // add a comment to the PR
-        await octokit.rest.issues.createComment({
+        await octokit.rest.issues.createComment({            
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
