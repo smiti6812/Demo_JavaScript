@@ -13,7 +13,8 @@ try {
     const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
     const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
     const { results } = await response.json();
-    const gifUrl = results[0].media[0].tinygif.url;
+    console.log(results);
+    //const gifUrl = results[0].media[0].tinygif.url;
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
         return;
