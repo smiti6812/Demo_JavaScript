@@ -29,10 +29,7 @@ try {
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
-            body: `Thank you for submitting a pull request! We will try to review this as soon as we can.` 
-          /*
-          \n\n<img src="${gifUrl}" alt="thank you" />` 
-          */          
+            body: `Thank you for submitting a pull request! We will try to review this as soon as we can.`               
           
         });
 
