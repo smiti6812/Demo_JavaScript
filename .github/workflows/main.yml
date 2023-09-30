@@ -17,6 +17,7 @@ jobs:
           who-to-greet: 'Mona the Octocat'
           input_1: 'input_1 has been changed'
           TENOR_TOKEN: ${{secrets.TENOR_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: |
