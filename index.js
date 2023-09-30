@@ -17,7 +17,7 @@ try {
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.number,
-            body: `Thank you for submitting a pull request! We will try to review this as soon as we can. + \n\n<img src="${gifUrl}" alt="thank you" />`
+            body: `Thank you for submitting a pull request! We will try to review this as soon as we can. + \n\n<img src="${gifUrl}" alt="thank you" />`;
             const randomPos = Math.round(Math.random() * 1000);
             const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
             const response = await fetch(url);
