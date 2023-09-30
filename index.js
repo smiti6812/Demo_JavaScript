@@ -15,11 +15,13 @@ try {
     }    
     // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
     if (context.payload.action === "opened") {
+      /*
         const randomPos = Math.round(Math.random() * 1000);
         const url = `https://api.tenor.com/v1/search?q=thank%20you&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high&key=${TENOR_TOKEN}`;
         const response = await fetch(url);
         const { results } = await response.json();
         const gifUrl = results[0].media[0].tinygif.url;
+        */
         // add a comment to the PR
         await octokit.rest.issues.createComment({
             owner: context.repo.owner,
