@@ -5,7 +5,31 @@ const fetch = (...args) =>
 
 
 try {
-  
+    if (!context.payload.action) {
+        core.warning("This action should only be used with pull requests.");
+        return;
+    }    
+    // https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+    if (context.payload.action === "opened") {
+
+        // add a comment to the PR
+        await octokit.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.number,
+            body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
+        });
+
+        // add a label to the PR
+        await octokit.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.number,
+            labels: ['acknowledged']
+        })
+    } else {
+        return;
+    }
   const input = core.getInput('input_1');
   console.log(input);
   const TENOR_TOKEN = core.getInput('TENOR_TOKEN');
