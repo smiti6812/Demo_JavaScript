@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-
+async main(){
 try {
     if (!context.payload.action) {
         core.warning("This action should only be used with pull requests.");
@@ -49,3 +49,6 @@ try {
 } catch (error) {
   core.setFailed(error.message);
 }
+}
+main();
+  
