@@ -10,6 +10,8 @@ inputs:
     default: 'I am input_1'
   TENOR_TOKEN:
     required: true
+  GITHUB_TOKEN:
+    required: true
      
 outputs:
   time: # id of output
