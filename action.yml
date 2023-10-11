@@ -11,8 +11,7 @@ inputs:
   TENOR_TOKEN:
     required: true
   GITHUB_TOKEN:
-    required: true
-     
+    required: true     
 outputs:
   time: # id of output
     description: 'The time we greeted you'
